@@ -1,0 +1,66 @@
+<% include partials/header %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+   <h2>MY Online Store</h2>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="well">
+    <div class="col-xs-10">
+      
+      <h3>Products:</h3>
+            <!-- Breadcrumbs -->
+            <% include partials/breadcrumbs %>
+            <div class="text-center">
+                             
+              <% products.forEach(function(product) { %>
+                <ul>
+                  <li id="listli">
+                  <div class="column">
+                    <div class="col-xs-12">
+                      <% if (product.image === 'true') { %>
+                       <img class="item" src="./img/<%= product.category %>/<%= product.product_name + '.jpg'%>">
+                      <% } else { %>
+                       <img class="item" src="./img/noimage.jpg">
+                      <% } %>
+                    </div>
+                  <br>
+
+                    <div class="col-xs-12">
+                      <b><%= product.product_name %></b><br> 
+                      Price: <%= product.price %>$ <br> 
+                      Category: <%= product.category %><br> 
+                      In stock:<%= product.in_stock %><a href="#" class="deleteProduct" data-id="<%= product._id %>"><button id="deletebutton">Delete</button></a>
+                      </div>
+                  </div>
+                  </li>
+                </ul>
+              <% }); %>
+              </div>
+            </div>
+        <br>
+      
+    </div>
+    <div class="col">
+      <div class="col-xs-2">
+        <% include partials/addproduct %><br>
+        <% include partials/addcategory %>
+
+        
+      </div>
+   
+    
+  </div>
+
+
+
+<h3><% include partials/footer %></h3>
+
+
+
+
+
+

@@ -1,0 +1,123 @@
+body {
+  background-color: #E3E3E3;
+}
+
+h2 {
+  padding: 20px;
+  text-align: center;
+}
+
+img {
+    padding-top:20px;
+    padding-bottom:10px;
+    max-width: 100%;
+    height: auto;
+}
+
+#category {
+  width: 125px;
+}
+
+h3 {
+  padding: 20px;
+}
+
+#listli {
+    list-style: none;
+    padding: 5px;
+    border-style: solid;
+    border-width: 0px;
+    background-color: #d2def2;
+    margin: 1px;
+    width: 190px;
+    height:320px;
+    float: left;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+
+.col-xs-2 {
+  padding-top:20px;
+  padding-bottom:20px;
+  
+  
+}
+
+.btn-danger {
+  float: right;
+  margin:5px;
+  font-size: 18px;
+}
+.btn-default {
+  float: right;
+  margin:5px;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+}
+
+
+.breadcrumb {
+  
+  background-color: white;
+  color: red;
+  text-decoration: none;
+
+}
+
+#deletebutton{
+  background-color: white;
+  color: black;
+  float: right;
+}
+
+a {
+    text-decoration: none;
+}
+
+.addproduct {
+  background-color:gray;
+  
+}
+
+
+
+/* ============= Footer ============= */
+
+footer {
+
+	background-color: #0c121c;
+	display: flex;
+	border-radius: 5px;
+}
+
+.copyRight {
+	opacity: 0.5;
+	margin: 10px;
+	margin-left: 25px;
+	text-align: left;
+	color: black;
+	font-size: 30px;
+	flex: 0.4 ;
+
+}
+
+.symbols {
+	margin-top:5px;
+	align-items: flex-end;
+	flex:1;
+	text-align: right;
+  
+	
+}
+
+.symbols img {
+	padding:10px;
+	margin: 0 auto;
+	width: 50px;
+  
+
+
+}

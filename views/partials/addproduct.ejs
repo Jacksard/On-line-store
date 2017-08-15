@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="container-fluid">
+        <h3>Add Product:</h3>
+            <form method="POST" action="/products" enctype="multipart/form-data">
+                
+                <label>Products Name:</label><br>
+                <input type="text" name="product_name"><br>
+            <label>Price:</label><br>
+                <input type="text" name="price">
+                <br><br>
+            <label>Category</label>
+                <select name="category">
+                    <option value="phones">Phones</option>
+                    <option value="gadgets">Gadgets</option>
+                    <option value="cpus">CPUs</option>
+                    <option value="books">Books</option>
+                    <option value="gpus">GPUs</option>
+                </select><br><br>
+                    <label>In stock</label>
+                    <select name="in_stock">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+            </select><br>
+            <br>
+            <h4>Product image:</h4>
+            <input type="file" name="image">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+  </div>
+</div>
+</div>
