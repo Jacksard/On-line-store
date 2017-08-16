@@ -11,11 +11,6 @@ var upload = multer({ dest: 'public/img/uploads' });
 var index = require('./routes/index');
 var products = require('./routes/products');
 var shoppingcart = require('./routes/shoppingcart');
-var phones = require('./routes/phones');
-var gadgets = require('./routes/gadgets');
-var cpus = require('./routes/cpus');
-var books = require('./routes/books');
-var gpus = require('./routes/gpus');
 var categories = require('./routes/categories');
 
 
@@ -35,16 +30,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 app.use('/', index);
 app.use('/products', products);
-app.use('/products/phones', phones);
-app.use('/products/gadgets', gadgets);
-app.use('/products/cpus', cpus);
-app.use('/products/books', books);
-app.use('/products/gpus', gpus);
+app.use('/shoppingcart', shoppingcart);
+
 app.use('/categories', categories);
-
-
-
-
 
 // Set Static path
 app.use(express.static(path.join(__dirname,'public')))

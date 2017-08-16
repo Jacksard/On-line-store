@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $('.deleteProduct').on('click', deleteProduct);
+
 });
 
 function deleteProduct(){
@@ -11,7 +12,7 @@ function deleteProduct(){
             type:'DELETE',
             url: '/products/delete/'+$(this).data('id')
         }).done(function(response){
-            window.location.replace('/');
+           window.location.replace('/');
         });
         window.location.replace('/');
         

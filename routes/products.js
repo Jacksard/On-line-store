@@ -26,10 +26,18 @@ router.post('/', upload.single('image'), function(req, res, next){
     newProduct.category = req.body.category;
     newProduct.in_stock = req.body.in_stock;
     newProduct.image = productimage;
-
+    
     console.log(newProduct);
      
     if (newProduct.image === 'true'){
+
+       
+        var dir = './public/img/'+newProduct.category;
+
+        if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+        }
+    
     fs.rename('./public/img/uploads/'+imageId, './public/img/'+ newProduct.category + '/' + newProduct.product_name +'.jpg'), function(err){
         if (err) throw err;
         console.log('renname Complete!');

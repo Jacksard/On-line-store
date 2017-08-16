@@ -1,23 +1,35 @@
 
 <% products.forEach(function(category){ %>
-<%if (category.category === type ) {%> 
-    <ul>
-                  <li id="listli">
-                  <div class="coloum">
-                    <div class="col-xs-12">
-                    <img class="item" src="../img/<%= category.category %>/<%= category.product_name + '.jpg'%>">
-                    </div>
-                  <br>
 
-                    <div class="col-xs-12">
-                      <b><%= category.product_name %></b><br> 
-                      Price: <%= category.price %>$ <br> 
-                      Category: <%= category.category %><br> 
-                      In stock:<%= category.in_stock %>
-                      </div>
-                  </div>
-                  </li>
-                </ul>
-<%}%>
+<% if (type === category.category) {%>
+
+<ul>
+<li id="listli">
+  <div class="coloum">
+    <div class="col-xs-12">
+      <% if (category.image === 'true' ) { %>
+      <img class="item" src="../img/<%= type %>/<%= category.product_name + '.jpg'%>">
+      <% } else { %>
+      <img class="item" src="../img/noimage.jpg">
+      <% } %>
+      </div>
+      <br>
+
+      <div class="col-xs-12">
+      <b><%= category.product_name %></b><br> 
+      Price: <%= category.price %>$ <br> 
+      Category: <%= category.category %><br> 
+      In stock:
+      <% if (category.in_stock === 'true'){ %>
+      yes
+      <% } else { %>
+      no
+      <% } %>
+
+    </div>
+  </div>
+</li>
+</ul>
+<% } %>
 <% }); %>
 

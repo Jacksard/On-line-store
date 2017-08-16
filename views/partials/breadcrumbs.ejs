@@ -1,8 +1,7 @@
+
 <ol class="breadcrumb">
-            <li><a href="/">All products</a></li>
-            <li><a href="/products/phones">Phones</a></li>
-            <li><a href="/products/gadgets">Gadgets</a></li>
-            <li><a href="/products/cpus">CPUs</a></li>
-            <li><a href="/products/books">Books</a></li>
-            <li><a href="/products/gpus">GPUs</a></li>
+    <li><a href="/">All products</a></li>
+    <% categories.forEach(function(name){ %>
+        <li><a href="/products/<%= name.name %>" id="<%= name.name %>" class="link" value="<%= name.name %>"><%= name.name %></a></li>
+    <% }); %>
 </ol>

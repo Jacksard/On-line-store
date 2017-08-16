@@ -1,0 +1,19 @@
+<%if (category.category === type ) {%> 
+    <ul>
+                  <li id="listli">
+                  <div class="coloum">
+                    <div class="col-xs-12">
+                    <img class="item" src="../img/<%= category.category %>/<%= category.product_name + '.jpg'%>">
+                    </div>
+                  <br>
+
+                    <div class="col-xs-12">
+                      <b><%= category.product_name %></b><br> 
+                      Price: <%= category.price %>$ <br> 
+                      Category: <%= category.category %><br> 
+                      In stock:<%= category.in_stock %>
+                      </div>
+                  </div>
+                  </li>
+                </ul>
+<%}%>
