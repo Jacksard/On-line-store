@@ -7,14 +7,10 @@ var multer = require('multer');
 var upload = multer({ dest: 'public/img/uploads' });
 
 
-
 var index = require('./routes/index');
 var products = require('./routes/products');
 var shoppingcart = require('./routes/shoppingcart');
 var categories = require('./routes/categories');
-
-
-
 
 var app = express();
 

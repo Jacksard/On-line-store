@@ -4,30 +4,32 @@
 <% if (type === category.category) {%>
 
 <ul>
-<li id="listli">
-  <div class="coloum">
-    <div class="col-xs-12">
-      <% if (category.image === 'true' ) { %>
-      <img class="item" src="../img/<%= type %>/<%= category.product_name + '.jpg'%>">
-      <% } else { %>
-      <img class="item" src="../img/noimage.jpg">
-      <% } %>
-      </div>
-      <br>
+   <li id="listli">
+                  <div class="column">
+                    <div class="col-xs-12">
+                      <% if (category.image === 'true' ) { %>
+                       <img class="item" src="../img/<%= type %>/<%= category.product_name + '.jpg'%>">
+                       <% } else { %>
+                       <img class="item" src="./img/noimage.jpg">
+                      <% } %>
+                    </div>
+                  <br>
 
-      <div class="col-xs-12">
-      <b><%= category.product_name %></b><br> 
-      Price: <%= category.price %>$ <br> 
-      Category: <%= category.category %><br> 
-      In stock:
-      <% if (category.in_stock === 'true'){ %>
-      yes
-      <% } else { %>
-      no
-      <% } %>
+                    <div class="col-xs-12">
+                      <b><%= category.product_name %></b><br> 
+                      Price: <%= category.price %>$ <br> 
+                      Category: <%= category.category %><br> 
 
-    </div>
-  </div>
+                      <!-- stock -->
+                      <% if (category.in_stock === 'true'){ %>
+                      <div id="in_stock">In stock</div>
+                      <% } else { %>
+                      <div id="not_in_stock">Currently unavailable</div>
+                      <% } %>
+
+                      </div>
+                  </div>
+                  
 </li>
 </ul>
 <% } %>
