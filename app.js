@@ -9,7 +9,7 @@ var upload = multer({ dest: 'public/img/uploads' });
 
 var index = require('./routes/index');
 var products = require('./routes/products');
-var shoppingcart = require('./routes/shoppingcart');
+var mycart = require('./routes/mycart');
 var categories = require('./routes/categories');
 
 var app = express();
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 app.use('/', index);
 app.use('/products', products);
-app.use('/shoppingcart', shoppingcart);
+app.use('/mycart', mycart);
 
 app.use('/categories', categories);
 

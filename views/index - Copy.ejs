@@ -1,22 +1,23 @@
+
 <% include partials/header %>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
    <h2>MY Online Store</h2>
+  
     </div>
   </div>
-</div>-
-
+</div>
 
 <div class="row">
   <div class="well">
     <div class="col-xs-10">
-       <h3><%= type %></h3>
-        <!-- Breadcrumbs -->
-      <% include partials/breadcrumbs %>
-        <div class="text-center">
-          <!-- List -->
-        <% products.forEach(function(product) { %>
+       <h3>Products:</h3>
+            <!-- Breadcrumbs -->
+            <% include partials/breadcrumbs %>
+            <div class="text-center">
+                         
+              <% products.forEach(function(product) { %>
                 <ul>
                   <li id="listli">
                   <div class="column">
@@ -28,7 +29,7 @@
                       <% } %>
                     </div>
                   <br>
-                    
+
                     <div class="col-xs-12">
                       <b><%= product.product_name %></b><br> 
                       Price: <%= product.price %>$ <br> 
@@ -40,9 +41,7 @@
                       <% } else { %>
                       <div id="not_in_stock">Currently unavailable</div>
                       <% } %>
-                      <!-- Add to Cart -->
-                      <a href="/mycart/<%= product._id %>" class="addToCart" id="<%= product._id %>"><button id="addtocart">Add to cart</button></a>
-                        
+
                       <!-- Delete Button -->
                       <a href="#" class="deleteProduct" data-id="<%= product._id %>"><button id="deletebutton">Delete</button></a>
                       </div>
@@ -50,28 +49,25 @@
                   </li>
                 </ul>
               <% }); %>
-       </div>
+              </div>
+            </div>
+        <br>
+      
     </div>
-  </div>
-    <div class="coloum">
+    <div class="col">
       <div class="col-xs-2">
-        <% include partials/addproduct %>
+        <% include partials/addproduct %><br>
         <% include partials/addcategory %>
-       </div>
-    </div>
-</div>
+
+        
+      </div>
+   
+    
+  </div>
 
 
 
 <h3><% include partials/footer %></h3>
-
-
-
-
-
-
-
-
 
 
 
