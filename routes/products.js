@@ -4,7 +4,7 @@ var mongojs = require('mongojs');
 var multer = require('multer');
 var upload = multer({ dest: 'public/img/uploads' });
 var fs = require('fs');
-var collections = ['products', 'categories', 'shoppingcart']
+var collections = ['products', 'categories', 'mycart']
 var db = mongojs('mongodb://jacob:jacob@ds129043.mlab.com:29043/online-store-products', collections);
 var ObjectId = mongojs.ObjectId;
 
@@ -61,6 +61,11 @@ router.delete('/delete/:id', function(req, res){
         res.redirect('/');
     })
 });
+
+
+
+
+
 
 
 

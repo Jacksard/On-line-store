@@ -8,6 +8,24 @@
 </div>-
 
 
+<div id="mycart" class="container">
+  <div class="row">
+  <div class="col-sm-10">
+    <div class="well">
+      hello
+    </div>
+  </div>
+  <div class="col-sm-2">
+  <div class="text-right">
+       <a href="/mycart" <button class="btn btn-primary">My-Cart <span class="badge badge-secondary"><%= amount %></span></a>
+      <span class="sr-only">unread messages</span></button>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+
 <div class="row">
   <div class="well">
     <div class="col-xs-10">
@@ -37,11 +55,13 @@
                       <!-- stock -->
                       <% if (product.in_stock === 'true'){ %>
                       <div id="in_stock">In stock</div>
+                      <a href="/mycart/<%= product._id %>" class="addToCart" id="<%= product._id %>"><button id="addtocart">Add to cart</button></a>
                       <% } else { %>
                       <div id="not_in_stock">Currently unavailable</div>
                       <% } %>
                       <!-- Add to Cart -->
-                      <a href="/mycart/<%= product._id %>" class="addToCart" id="<%= product._id %>"><button id="addtocart">Add to cart</button></a>
+                      
+                      
                         
                       <!-- Delete Button -->
                       <a href="#" class="deleteProduct" data-id="<%= product._id %>"><button id="deletebutton">Delete</button></a>

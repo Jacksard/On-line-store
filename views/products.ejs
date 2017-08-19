@@ -5,13 +5,23 @@
    <h2>MY Online Store</h2>
     </div>
   </div>
-</div>-
+</div>
+
+
+<div id="mycart" class="container">
+  <div class="text-right">
+       <a href="/mycart" <button class="btn btn-primary">My-Cart <span class="badge badge-secondary"><%= amount %></span></a>
+      <span class="sr-only">unread messages</span>
+</button>
+  </div>
+</div>
+
 
 
 <div class="row">
   <div class="well">
     <div class="col-xs-10">
-       <h3><%= type %></h3>
+       <h3><%= type %></h3> 
         <!-- Breadcrumbs -->
       <% include partials/breadcrumbs %>
         <div class="text-center">

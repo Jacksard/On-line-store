@@ -1,11 +1,10 @@
 
-<h2>My Cart:</h2>
+<h2><%= title %></h2>
 <h3>Items:</h3>
+<ul>
+<% products.forEach(function(product) { %>
+    <li><%= product.product_name %></li>
+<% }); %>
 
-<p>building my cart page.</p>
-<p>will redirect to the page where it was clicked</p>
-<p>my cart will be accessed as a seperate link
-check the <b>console</b> to see the product which was clicked.</p>
-<b>
-
+<h3>number of items in cart: <%= amount_incart %></h3>
 
