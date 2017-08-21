@@ -3,7 +3,9 @@
 <h3>Items:</h3>
 <ul>
 <% products.forEach(function(product) { %>
-    <li><%= product.product_name %>, <%= product.price %> $</li>
+    <li><%= product.product_name %>, <%= product.price %> $
+    <a href="/mycart/remove/<%= product._id %>"  class="delete" id="<%= product._id %>"><button id="delete">Remove</button></a>
+    </li>
 
 <% }); %>
 

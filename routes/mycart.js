@@ -14,14 +14,11 @@ router.get('/', function(req, res, next){
         products.forEach(function(price) {
             console.log(price.price);
             sum += price.price;
-            console.log(sum);
+            
             total = sum.toFixed(2);
             console.log(total);
         });
-        
-        
-
-        
+               
         res.render('mycart', { 
             title : 'My Shopping cart:',
             products: products,
@@ -44,6 +41,23 @@ router.get('/:id', function(req, res, next){
     });
 
 });
+
+
+router.get('/remove/:id', function(req, res, next){
+    var removeId = req.params.id;
+    console.log(removeId);
+
+    db.mycart.remove({_id: ObjectId(req.params.id)}, function(err, result){
+        if (err){
+            console.log(err);
+        }
+        res.redirect('/mycart');
+    });
+});
+
+
+
+
 
 
 
