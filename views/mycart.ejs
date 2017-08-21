@@ -1,10 +1,12 @@
-
+<% include partials/header %>
 <h2><%= title %></h2>
 <h3>Items:</h3>
 <ul>
 <% products.forEach(function(product) { %>
-    <li><%= product.product_name %></li>
+    <li><%= product.product_name %>, <%= product.price %> $</li>
+
 <% }); %>
 
 <h3>number of items in cart: <%= amount_incart %></h3>
 
+<h3>Total Price: <%= total %> $</h3>

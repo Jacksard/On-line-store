@@ -22,7 +22,7 @@ router.post('/', upload.single('image'), function(req, res, next){
 
     var newProduct = {};
     newProduct.product_name = req.body.product_name;
-    newProduct.price = req.body.price;
+    newProduct.price = Number(req.body.price);
     newProduct.category = req.body.category;
     newProduct.in_stock = req.body.in_stock;
     newProduct.desc = req.body.desc;

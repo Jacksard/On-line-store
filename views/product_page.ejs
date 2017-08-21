@@ -1,4 +1,4 @@
-
+<% include partials/header %>
 <h2><%= targetedProduct %></h2>
 
 <% products.forEach(function(product) { %>
@@ -6,6 +6,15 @@
         
     
     <img class="item" src="../../img/<%= product.category %>/<%= product.product_name + '.jpg'%>"><br>
+    <h3>price :<%= product.price %> $</h3>
+
+    <% if (product.in_stock === 'true'){ %>
+        <div id="in_stock">In stock</div>
+        <a href="/mycart/<%= product._id %>" class="addToCart" id="<%= product._id %>"><button id="addtocart">Add to cart</button></a>
+        <% } else { %>
+        <div id="not_in_stock">Currently unavailable</div>
+        <% } %>
+
     <h3>Description:</h3>
     <%= product.desc %>
     

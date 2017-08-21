@@ -8,11 +8,25 @@ var ObjectId = mongojs.ObjectId;
 router.get('/', function(req, res, next){
     
     db.mycart.find(function(err, products){
-   
+
+        var total = 0;
+        var sum = 0;
+        products.forEach(function(price) {
+            console.log(price.price);
+            sum += price.price;
+            console.log(sum);
+            total = sum.toFixed(2);
+            console.log(total);
+        });
+        
+        
+
+        
         res.render('mycart', { 
             title : 'My Shopping cart:',
             products: products,
-            amount_incart: products.length
+            amount_incart: products.length,
+            total
         });       
 });
 });
