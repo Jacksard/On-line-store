@@ -25,7 +25,9 @@ router.post('/', upload.single('image'), function(req, res, next){
     newProduct.price = req.body.price;
     newProduct.category = req.body.category;
     newProduct.in_stock = req.body.in_stock;
+    newProduct.desc = req.body.desc;
     newProduct.image = productimage;
+    
     
     console.log(newProduct);
      

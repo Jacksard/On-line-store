@@ -1,0 +1,13 @@
+
+<h2><%= targetedProduct %></h2>
+
+<% products.forEach(function(product) { %>
+    <% if (product.product_name === targetedProduct) { %>
+        
+    
+    <img class="item" src="../../img/<%= product.category %>/<%= product.product_name + '.jpg'%>"><br>
+    <h3>Description:</h3>
+    <%= product.desc %>
+    
+    <% } %>
+<% }); %>

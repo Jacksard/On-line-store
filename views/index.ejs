@@ -40,9 +40,9 @@
                   <div class="column">
                     <div class="col-xs-12">
                       <% if (product.image === 'true' ) { %>
-                       <img class="item" src="../img/<%= product.category %>/<%= product.product_name + '.jpg'%>">
+                       <a href='/products/<%= product.category %>/<%= product.product_name %>'><img class="item" src="../img/<%= product.category %>/<%= product.product_name + '.jpg'%>"></a>
                        <% } else { %>
-                       <img class="item" src="./img/noimage.jpg">
+                        <a href='/products/<%= product.category %>/<%= product.product_name %>'><img class="item" src="./img/noimage.jpg"></a>
                       <% } %>
                     </div>
                   <br>
