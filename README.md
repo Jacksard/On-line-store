@@ -1,5 +1,8 @@
 # On-line-store
-concept of an on-line store with Admin Control, Technologies used: NodeJS, Express, MongoDB-MLab services, EJS view Engine.
+
+-Still under work-
+
+A concept of an on-line store with Admin Control, Technologies used: NodeJS, Express, MongoDB-MLab services, EJS view Engine.
 
 Instructions how to use:
 1. clone the repository
