@@ -1,6 +1,7 @@
 # On-line-store
 
--Still under work-
+- Still under work 
+- See Issues for current screenshots
 
 A concept of an on-line store with Admin Control, Technologies used: NodeJS, Express, MongoDB-MLab services, EJS view Engine.
 
