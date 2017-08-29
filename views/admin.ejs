@@ -50,10 +50,12 @@
                       <!-- stock -->
                       <% if (product.in_stock === 'true'){ %>
                       <div id="in_stock">In stock</div>
-                      <a href="/mycart/<%= product._id %>" class="edit" id="<%= product._id %>"><button class="btn btn-primary" id="edit">Edit</button></a>
+                      <a href="/admin/<%= product._id %>" onclick="window.open(this.href, 'editwindow',
+                        'left=20,top=20,width=500,height=500'); return false;" target="_blank" class="edit" id="<%= product._id %>"><button class="btn btn-primary" id="edit">Edit</button></a>
                       <% } else { %>
                       <div id="not_in_stock">Currently unavailable</div>
-                      <a href="/mycart/<%= product._id %>" class="edit" id="<%= product._id %>"><button class="btn btn-primary" id="edit">Edit</button></a>
+                      <a href="/admin/<%= product._id %>" onclick="window.open(this.href, 'editwindow',
+                        'left=20,top=20,width=500,height=500'); return false;" target="_blank" class="edit" id="<%= product._id %>"><button class="btn btn-primary" id="edit">Edit</button></a>
                       <% } %>
                       <!-- Add to Cart -->
                       

@@ -54,5 +54,17 @@
  
 
     });
-    
+    // delete and save a new product (mocking an update)
       
+    db.products.remove({_id: ObjectId(req.params.id)}, function(err, result){
+        console.log('updated!');
+        });
+
+    db.products.save(editProduct, function(err, docs){
+        res.status(301).end();
+        })
+
+
+"\""+doc.product_name+"\"",
+
+59a5ecf2d033641128b10cef

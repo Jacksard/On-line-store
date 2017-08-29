@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
+var multer = require('multer');
+var upload = multer({ dest: 'public/img/uploads' });
+var fs = require('fs');
 var collections = ['products', 'categories', 'mycart']
 var db = mongojs('mongodb://jacob:jacob@ds129043.mlab.com:29043/online-store-products', collections);
-
+var ObjectId = mongojs.ObjectId;
 
 router.get('/', function(req, res, next){
     
@@ -25,7 +28,7 @@ router.get('/', function(req, res, next){
             } else {
             
             res.render('admin', { 
-                title : 'Main Page',
+                title : 'Admin Page',
                 products : products,
                 categories : categories,
                 amount: amount.length,
@@ -33,10 +36,103 @@ router.get('/', function(req, res, next){
                 
                 });
             };
-            });
         });
-        });
-    
     });
+});
+});
 
-    module.exports = router;
+
+router.get('/:id', function(req, res, next){
+    var proId = req.params.category;
+
+    
+
+    db.categories.find(function(err, categories){
+        if(err){
+        res.send(err);
+        }
+
+    var productId = req.params.id;
+    console.log(productId);
+
+    db.products.findOne({_id: mongojs.ObjectId(productId)}, function(err, doc) {
+        console.log(doc);
+        res.render('partials/editproduct', {
+            title : 'Edit Page',
+            categories : categories,
+            doc
+            
+        });
+    });
+ 
+});
+});
+
+// EDIT PRODUCT
+router.post('/edit/:id', upload.single('image'), function(req, res, next){
+
+    var productId = req.params.id;
+    console.log(productId);
+    console.log(productId);
+    console.log(productId);
+    console.log("\""+productId+"\"");
+
+     if(req.file){
+        var imageId = req.file.filename;
+        var productimage = 'true';
+        console.log(productimage);
+        console.log(imageId);
+    } else {
+        productimage = 'false';
+    }
+
+    var editProduct = {};
+    editProduct.product_name = req.body.product_name;
+    editProduct.price = Number(req.body.price);
+    editProduct.category = req.body.category;
+    editProduct.in_stock = req.body.in_stock;
+    editProduct.desc = req.body.desc;
+    editProduct.image = productimage;
+    
+    console.log("editProduct");
+    console.log(editProduct);
+     
+    if (editProduct.image === 'true'){
+        var dir = './public/img/'+editProduct.category;
+        if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+        }
+    
+    fs.rename('./public/img/uploads/'+imageId, './public/img/'+ editProduct.category + '/' + editProduct.product_name +'.jpg'), function(err){
+        if (err) throw err;
+        console.log('renname Complete!');
+    }
+    } else {
+        console.log('no picture uploaded');
+    }
+
+    // Using Doc to target product_name for the update, cant target Id for some reason.
+    db.products.findOne({_id: mongojs.ObjectId(productId)}, function(err, doc){
+        if(err){
+            res.send(err);
+            }
+     console.log(doc.product_name);
+    
+    db.products.update({"product_name": doc.product_name},{
+       $set: {
+               "product_name": editProduct.product_name,
+               "price": editProduct.price,
+               "category": editProduct.category,
+               "desc": editProduct.desc
+             }
+       },{
+         insert:false,
+         multi : true
+       })
+       
+});
+});
+
+module.exports = router;
+
+

@@ -8,7 +8,7 @@ var collections = ['products', 'categories', 'mycart']
 var db = mongojs('mongodb://jacob:jacob@ds129043.mlab.com:29043/online-store-products', collections);
 var ObjectId = mongojs.ObjectId;
 
-
+// Save a new Product
 router.post('/', upload.single('image'), function(req, res, next){
     
      if(req.file){
