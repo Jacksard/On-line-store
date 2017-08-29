@@ -12,6 +12,7 @@
    <div class="col-sm-12">
   <div class="text-right">
        <a href="/mycart" <button class="btn btn-primary">My-Cart <span class="badge badge-secondary"><%= amount %></span></a>
+       <a href="/admin" <button class="btn btn-primary">Admin</a>
       <span class="sr-only"></span></button>
   </div>
   </div>
@@ -58,7 +59,7 @@
                       
                         
                       <!-- Delete Button -->
-                      <a href="#" class="deleteProduct" data-id="<%= product._id %>"><button id="deletebutton">Delete</button></a>
+                     
                       </div>
                   </div>
                   </li>
@@ -69,8 +70,7 @@
   </div>
     <div class="coloum">
       <div class="col-xs-2">
-        <% include partials/addproduct %>
-        <% include partials/addcategory %>
+        
        </div>
     </div>
 </div>

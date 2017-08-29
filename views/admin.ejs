@@ -1,0 +1,89 @@
+<% include partials/header %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+   <h2>MY Online Store - Admin interface</h2>
+    </div>
+  </div>
+</div>
+
+
+<div id="mycart" class="container">
+   <div class="col-sm-12">
+  <div class="text-right">
+       <a href="/mycart" <button class="btn btn-primary">My-Cart <span class="badge badge-secondary"><%= amount %></span></a>
+       <a href="/" <button class="btn btn-primary">User</a>
+      <span class="sr-only"></span></button>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="well">
+    <div class="col-xs-10">
+       <h3><%= type %></h3>
+        <!-- Breadcrumbs -->
+      <% include partials/breadcrumbs %>
+        <div class="text-center">
+          <!-- List -->
+        <% products.forEach(function(product) { %>
+                <ul>
+                  <li id="listli">
+                  <div class="column">
+                    <div class="col-xs-12">
+                      <% if (product.image === 'true' ) { %>
+                       <a href='/products/<%= product.category %>/<%= product.product_name %>'><img class="item" src="../img/<%= product.category %>/<%= product.product_name + '.jpg'%>"></a>
+                       <% } else { %>
+                        <a href='/products/<%= product.category %>/<%= product.product_name %>'><img class="item" src="./img/noimage.jpg"></a>
+                      <% } %>
+                    </div>
+                  <br>
+                    
+                    <div class="col-xs-12">
+                      <b><%= product.product_name %></b><br> 
+                      Price: <%= product.price %>$ <br> 
+                      Category: <%= product.category %><br> 
+
+                      <!-- stock -->
+                      <% if (product.in_stock === 'true'){ %>
+                      <div id="in_stock">In stock</div>
+                      <a href="/mycart/<%= product._id %>" class="edit" id="<%= product._id %>"><button class="btn btn-primary" id="edit">Edit</button></a>
+                      <% } else { %>
+                      <div id="not_in_stock">Currently unavailable</div>
+                      <a href="/mycart/<%= product._id %>" class="edit" id="<%= product._id %>"><button class="btn btn-primary" id="edit">Edit</button></a>
+                      <% } %>
+                      <!-- Add to Cart -->
+                      
+                      
+                        
+                      <!-- Delete Button -->
+                      <a href="#" class="deleteProduct" data-id="<%= product._id %>"><button class="btn btn-danger"id="deletebutton">Delete</button></a>
+                      </div>
+                  </div>
+                  </li>
+                </ul>
+              <% }); %>
+       </div>
+    </div>
+  </div>
+    <div class="coloum">
+      <div class="col-xs-2">
+        <% include partials/addproduct %>
+        <% include partials/addcategory %>
+       </div>
+    </div>
+</div>
+
+
+
+<h3><% include partials/footer %></h3>
+
+
+
+
+
+
+

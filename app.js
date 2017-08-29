@@ -11,6 +11,7 @@ var index = require('./routes/index');
 var products = require('./routes/products');
 var mycart = require('./routes/mycart');
 var categories = require('./routes/categories');
+var admin = require('./routes/admin');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use('/', index);
 app.use('/products', products);
 app.use('/mycart', mycart);
+app.use('/admin', admin);
 
 app.use('/categories', categories);
 

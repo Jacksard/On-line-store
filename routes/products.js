@@ -32,10 +32,7 @@ router.post('/', upload.single('image'), function(req, res, next){
     console.log(newProduct);
      
     if (newProduct.image === 'true'){
-
-       
         var dir = './public/img/'+newProduct.category;
-
         if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
         }

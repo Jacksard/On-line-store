@@ -22,6 +22,7 @@ h3 {
   padding: 20px;
 }
 
+
 #listli {
     list-style: none;
     padding: 5px;
@@ -50,6 +51,12 @@ h3 {
   margin:5px;
   font-size: 18px;
 }
+
+#edit {
+  margin-top:5px;
+  font-size: 15px;
+  
+}
 .btn-default {
   float: right;
   margin:5px;
@@ -69,7 +76,7 @@ h3 {
 
 #deletebutton{
   
-  background-color: white;
+  font-size: 15px;
   color: black;
   float: right;
 }
@@ -79,7 +86,13 @@ a {
 }
 
 .addproduct {
-  background-color:gray;
+  border:2px solid; 
+  padding-bottom:10px;
+}
+
+.addcategory{
+  border:2px solid; 
+  padding-top:50px 10px 20px 10px;
   
 }
 
