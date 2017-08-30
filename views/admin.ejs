@@ -62,7 +62,7 @@
                       
                         
                       <!-- Delete Button -->
-                      <a href="#" class="deleteProduct" data-id="<%= product._id %>"><button class="btn btn-danger"id="deletebutton">Delete</button></a>
+                      <a href="#" class="deleteProduct" data-id="<%= product._id %>"><button class="btn btn-danger" id="deletebutton">Delete</button></a>
                       </div>
                   </div>
                   </li>
@@ -73,7 +73,18 @@
   </div>
     <div class="coloum">
       <div class="col-xs-2">
+       
+          <% if (errors !== undefined & errors !== 'null') { %>
+            <h4><Strong>Fill the product details</Strong></h4>
+            <% for (const error of errors){ %>
+            
+            <div class="alert alert-danger"><%= error.msg %></div>
+            
+            <% } %>
+            <% }  %>
+       
         <% include partials/addproduct %>
+        <br>
         <% include partials/addcategory %>
        </div>
     </div>

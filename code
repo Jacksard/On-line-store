@@ -67,4 +67,11 @@
 
 "\""+doc.product_name+"\"",
 
-59a5ecf2d033641128b10cef
+
+
+ <% errors.forEach(function(err){ %>
+          <ul>
+            <li><% err.msg %></li>
+          </ul>
+        <%})%>
+

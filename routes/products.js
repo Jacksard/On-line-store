@@ -1,12 +1,16 @@
 var express = require('express');
-var router = express.Router();
 var mongojs = require('mongojs');
 var multer = require('multer');
+var expressValidator = require('express-validator');
+var router = express.Router();
 var upload = multer({ dest: 'public/img/uploads' });
 var fs = require('fs');
+var bodyParser = require('body-parser');
 var collections = ['products', 'categories', 'mycart']
 var db = mongojs('mongodb://jacob:jacob@ds129043.mlab.com:29043/online-store-products', collections);
 var ObjectId = mongojs.ObjectId;
+
+router.use(expressValidator());
 
 // Save a new Product
 router.post('/', upload.single('image'), function(req, res, next){
@@ -29,25 +33,41 @@ router.post('/', upload.single('image'), function(req, res, next){
     newProduct.image = productimage;
     
     
-    console.log(newProduct);
-     
-    if (newProduct.image === 'true'){
-        var dir = './public/img/'+newProduct.category;
-        if (!fs.existsSync(dir)){
-        fs.mkdirSync(dir);
-        }
-    
-    fs.rename('./public/img/uploads/'+imageId, './public/img/'+ newProduct.category + '/' + newProduct.product_name +'.jpg'), function(err){
-        if (err) throw err;
-        console.log('renname Complete!');
-    }
-    } else {
-        console.log('no picture uploaded');
-    }
+    // Validation
+	req.checkBody('product_name', 'Product name is required').notEmpty();
+	req.checkBody('price', 'Products price is required').notEmpty();
+	req.checkBody('desc', 'Description is required').notEmpty();
+	
 
-    db.products.save(newProduct, function(err, docs){
-            res.status(301).redirect('/')
-            })
+	var errors = req.validationErrors();
+
+    if(errors){
+        res.render('admin', {
+            errors:errors
+        });
+    } else {
+
+
+        console.log(newProduct);
+        
+       if (newProduct.image === 'true'){
+           var dir = './public/img/'+newProduct.category;
+           if (!fs.existsSync(dir)){
+           fs.mkdirSync(dir);
+           }
+       
+       fs.rename('./public/img/uploads/'+imageId, './public/img/'+ newProduct.category + '/' + newProduct.product_name +'.jpg'), function(err){
+           if (err) throw err;
+           console.log('renname Complete!');
+       }
+       } else {
+           console.log('no picture uploaded');
+       }
+   
+       db.products.save(newProduct, function(err, docs){
+               res.status(301).redirect('/')
+               })
+   }
 });
 
 
@@ -56,21 +76,11 @@ router.delete('/delete/:id', function(req, res){
         if (err){
             console.log(err);
 
-        }
+        } else {
         res.redirect('/');
+        };
     })
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = router;

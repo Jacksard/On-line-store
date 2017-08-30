@@ -14,7 +14,7 @@ function deleteProduct(){
         }).done(function(response){
            window.location.replace('/');
         });
-        window.location.replace('/');
+        window.location.replace('/admin');
         
     } else {
         return false;
