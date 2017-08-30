@@ -50,12 +50,12 @@
                       <!-- stock -->
                       <% if (product.in_stock === 'true'){ %>
                       <div id="in_stock">In stock</div>
-                      <a href="/admin/<%= product._id %>" onclick="window.open(this.href, 'editwindow',
-                        'left=20,top=20,width=500,height=500'); return false;" target="_blank" class="edit" id="<%= product._id %>"><button class="btn btn-primary" id="edit">Edit</button></a>
+                      <a href="/admin/edit/<%= product._id %>" onclick="window.open(this.href, 'editwindow',
+                        'left=20,top=20,width=500,height=800'); return false;" target="_blank" class="edit" id="<%= product._id %>"><button class="btn btn-primary" id="edit">Edit</button></a>
                       <% } else { %>
                       <div id="not_in_stock">Currently unavailable</div>
-                      <a href="/admin/<%= product._id %>" onclick="window.open(this.href, 'editwindow',
-                        'left=20,top=20,width=500,height=500'); return false;" target="_blank" class="edit" id="<%= product._id %>"><button class="btn btn-primary" id="edit">Edit</button></a>
+                      <a href="/admin/edit/<%= product._id %>" onclick="window.open(this.href, 'editwindow',
+                        'left=20,top=20,width=500,height=800'); return false;" target="_blank" class="edit" id="<%= product._id %>"><button class="btn btn-primary" id="edit">Edit</button></a>
                       <% } %>
                       <!-- Add to Cart -->
                       
@@ -74,7 +74,7 @@
     <div class="coloum">
       <div class="col-xs-2">
        
-          <% if (errors !== undefined & errors !== 'null') { %>
+          <% if (errors !== 'null' &&  errors !== undefined ) { %>
             <h4><Strong>Fill the product details</Strong></h4>
             <% for (const error of errors){ %>
             

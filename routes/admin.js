@@ -138,7 +138,7 @@ router.post('/add', upload.single('image'), function(req, res, next){
 });
 
 
-router.get('/:id', function(req, res, next){
+router.get('/edit/:id', function(req, res, next){
     var proId = req.params.category;
 
     
@@ -151,12 +151,13 @@ router.get('/:id', function(req, res, next){
     var productId = req.params.id;
     console.log(productId);
 
-    db.products.findOne({_id: mongojs.ObjectId(productId)}, function(err, doc) {
-        console.log(doc);
-        res.render('partials/editproduct', {
+    db.products.findOne({_id: mongojs.ObjectId(productId)}, function(err, edit) {
+        console.log(edit);
+        res.render('./partials/editproduct', {
             title : 'Edit Page',
             categories : categories,
-            doc
+            edit,
+            errors:'null'
             
         });
     });
@@ -180,6 +181,21 @@ router.post('/edit/:id', upload.single('image'), function(req, res, next){
         productimage = 'false';
     }
 
+    var type = 'All Products';
+ 
+            
+    db.products.find(function(err, products){
+        if(err){
+        res.send(err);
+        } 
+
+    db.categories.find(function(err, categories){
+        if(err){
+        res.send(err);
+        
+        };
+
+
     var editProduct = {};
     editProduct.product_name = req.body.product_name;
     editProduct.price = Number(req.body.price);
@@ -190,7 +206,32 @@ router.post('/edit/:id', upload.single('image'), function(req, res, next){
     
     console.log("editProduct");
     console.log(editProduct);
-     
+
+   // Validation
+   req.checkBody('product_name', 'Product name is required').notEmpty();
+   req.checkBody('price' , 'Price is required').notEmpty();
+   req.checkBody('price' , 'Price must be a Number').isNumeric();
+   req.checkBody('price' , 'Price must be a positive Number').isCurrency({allow_negatives: false});
+   req.checkBody('desc', 'Description is required').notEmpty();
+   
+
+   var errors = req.validationErrors();
+
+   if(errors){
+       console.log(errors);
+       console.log(productId);
+       
+       res.render('partials/editproduct', {
+           title : 'Edit Pageaaaaa',
+           errors:errors,
+           products : products,
+           categories : categories,
+           edit: 'null',
+           type
+       });
+       
+   } else {
+    
     if (editProduct.image === 'true'){
         var dir = './public/img/'+editProduct.category;
         if (!fs.existsSync(dir)){
@@ -199,13 +240,13 @@ router.post('/edit/:id', upload.single('image'), function(req, res, next){
     
     fs.rename('./public/img/uploads/'+imageId, './public/img/'+ editProduct.category + '/' + editProduct.product_name +'.jpg'), function(err){
         if (err) throw err;
-        console.log('renname Complete!');
+        console.log('rename Completed!');
     }
     } else {
         console.log('no picture uploaded');
     }
 
-    // Using Doc to target product_name for the update, cant target Id for some reason.
+    // Using Doc to target product_name for the update, cant target Id.
     db.products.findOne({_id: mongojs.ObjectId(productId)}, function(err, doc){
         if(err){
             res.send(err);
@@ -222,10 +263,14 @@ router.post('/edit/:id', upload.single('image'), function(req, res, next){
        },{
          insert:false,
          multi : true
-       })
-       
+       });    
+    });
+
+}
 });
 });
+});
+
 
 module.exports = router;
 

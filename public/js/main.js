@@ -1,6 +1,8 @@
 $(document).ready(function(){
     $('.deleteProduct').on('click', deleteProduct);
-
+    $('.editButton').click(function(){
+        alert("The paragraph was clicked.");
+    });
 });
 
 function deleteProduct(){
@@ -21,7 +23,9 @@ function deleteProduct(){
     }
 }
 
-
+$('.editButton').click(function() {
+    alert( "Handler for .click() called." );
+  });
 /*
 function deleteProduct(value){
     console.log("hello Delete");

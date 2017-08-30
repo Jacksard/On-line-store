@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <title><%= title %></title>
 </head>
 <body>
 
 <div class="container">
 <h2>Edit Product:</h2>
-<form method="POST" action="/admin/edit/<%= doc._id %>" enctype="multipart/form-data">
+
+<% if (errors !== 'null' &&  errors !== undefined ) { %>
+    <h4><Strong>Fill the product details</Strong></h4>
+    <% for (const error of errors){ %>
+    
+    <div class="alert alert-danger"><%= error.msg %></div>
+    
+    <% } %>
+    <% }  %>
+
+<form method="POST" action="/admin/edit/<%= edit._id %>" enctype="multipart/form-data">
 
     <label>Product Name:</label><br>
-        <input type="text" name="product_name" placeholder="<%= doc.product_name %>"><br>
+        <input type="text" name="product_name" placeholder="<%= edit.product_name %>"><br>
     <label>Price:</label><br>
-        <input type="text" name="price" placeholder="<%= doc.price %>">
+        <input type="text" name="price" placeholder="<%= edit.price %>">
 <br><br>
 
 <label>Category</label>
@@ -41,7 +51,7 @@
 <h4>Product image:</h4>
 <input type="file" name="image">
 <br>
-<input type="submit" value="Submit">
+<input type="submit" value="Submit" class="editbutton">
 </form>
 </div>
 <!---
