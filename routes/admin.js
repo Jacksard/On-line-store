@@ -88,7 +88,9 @@ router.post('/add', upload.single('image'), function(req, res, next){
 
     // Validation
 	req.checkBody('product_name', 'Product name is required').notEmpty();
-	req.checkBody('price' , 'Price is required').notEmpty();
+    req.checkBody('price' , 'Price is required').notEmpty();
+    req.checkBody('price' , 'Price must be a Number').isNumeric();
+    req.checkBody('price' , 'Price must be a positive Number').isCurrency({allow_negatives: false});
 	req.checkBody('desc', 'Description is required').notEmpty();
 	
 
@@ -167,9 +169,7 @@ router.post('/edit/:id', upload.single('image'), function(req, res, next){
 
     var productId = req.params.id;
     console.log(productId);
-    console.log(productId);
-    console.log(productId);
-    console.log("\""+productId+"\"");
+   
 
      if(req.file){
         var imageId = req.file.filename;
